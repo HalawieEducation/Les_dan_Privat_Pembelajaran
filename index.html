@@ -27,6 +27,7 @@
         }
 
         .font-serif { font-family: 'Playfair Display', serif; }
+        .font-arabic { font-family: 'Amiri', serif; }
 
         .text-maroon { color: var(--color-maroon); }
         .bg-maroon { background-color: var(--color-maroon); }
@@ -80,72 +81,108 @@
             border-radius: 60px 5px 60px 5px;
         }
 
-        .spinner {
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            border-top: 3px solid #D4AF37;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
+        .img-gallery {
+            border-radius: 30px 5px 30px 5px;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .img-gallery:hover {
+            transform: scale(1.02);
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .plain-list li {
+            position: relative;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .islamic-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l2.5 12.5L45 15l-12.5 2.5L30 30l-2.5-12.5L15 15l12.5-2.5z' fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden islamic-pattern">
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 nav-sticky">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Logo Halawie Education" class="h-12 w-auto object-contain drop-shadow-sm">
+                <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Logo Halawie Education" class="h-10 md:h-12 w-auto object-contain drop-shadow-sm">
                 <div class="flex flex-col">
                     <span class="text-lg font-bold leading-none text-maroon">Halawie</span>
                     <span class="text-[10px] tracking-[0.2em] text-black uppercase">Education</span>
                 </div>
             </div>
+            
             <div class="hidden md:flex gap-8 items-center text-sm font-medium">
                 <a href="#program" class="hover:text-maroon transition-colors">Program</a>
-                <a href="#ai-assistant" class="hover:text-maroon transition-colors font-bold">Tanya AI ✨</a>
-                <a href="#paket" class="hover:text-maroon transition-colors">Harga</a>
-                <a href="https://wa.me/6285871509096" class="btn-gold px-5 py-2.5 rounded-full font-bold">Daftar Trial</a>
+                <a href="#galeri" class="hover:text-maroon transition-colors">Galeri</a>
+                <a href="#paket" class="hover:text-maroon transition-colors">Pilihan</a>
+                <a href="https://wa.me/6285871509096?text=Halo%20saya%20tertarik%20dengan%20les%20/%20privat%20pembelajaran%20di%20Halawie%20Education!" class="btn-gold px-6 py-2.5 rounded-full font-bold">Daftar Trial</a>
             </div>
+
+            <button id="menu-btn" class="md:hidden text-maroon focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Side Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-maroon z-[60] flex flex-col items-center justify-center space-y-8 md:hidden">
+        <button id="close-btn" class="absolute top-6 right-6 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <a href="#program" class="text-white text-2xl font-bold mobile-link">Program</a>
+        <a href="#galeri" class="text-white text-2xl font-bold mobile-link">Galeri Belajar</a>
+        <a href="#paket" class="text-white text-2xl font-bold mobile-link">Pelajaran Pilihan</a>
+        <a href="https://wa.me/6285871509096?text=Halo%20saya%20tertarik%20dengan%20les%20/%20privat%20pembelajaran%20di%20Halawie%20Education!" class="bg-gold text-white px-8 py-3 rounded-full font-bold text-xl">Daftar Trial</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 px-6 min-h-[90vh] flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://lh3.googleusercontent.com/d/19tTypYAO461vKCvZE9a60KAsB8bmw3SZ" alt="Background Halawie Education" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-white/75 backdrop-blur-[2px]"></div>
+            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=1200&auto=format&fit=crop" alt="Latar Belakang Edukasi" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-white/90 md:bg-white/85 backdrop-blur-[2px]"></div>
         </div>
 
         <div class="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full">
             <div class="reveal active">
-                <span class="inline-block px-4 py-1 bg-gold-light text-maroon rounded-full text-xs font-bold mb-6">Partner Belajar Anak Hebat</span>
+                <span class="inline-block px-4 py-1 bg-gold-light text-maroon rounded-full text-xs font-bold mb-6 italic tracking-wide">Bismillah, Partner Belajar Anak Hebat</span>
                 <h1 class="text-4xl md:text-6xl font-serif text-black leading-tight mb-6">
                     Generasi <br><span class="text-maroon">Al-Qur'an</span> & <br><span class="text-gold italic">Kreatif Digital.</span>
                 </h1>
                 <p class="text-lg text-gray-800 mb-8 leading-relaxed max-w-md font-medium">
-                    Les/Privat online dan offline untuk jenjang TK, SD, SMP: Metode Ummi, Bahasa Arab, Desain Grafis, IPAS, Matematika dan Pelajaran lainnya.
+                    Privat TK, SD, SMP: Metode Ummi, Bahasa Arab, Desain Grafis, IPAS, Matematika dan Pelajaran lainnya di Tasikmalaya.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/6285871509096" class="btn-gold px-10 py-4 rounded-2xl text-center font-bold text-lg">Daftar Kelas Trial</a>
-                    <a href="#ai-assistant" class="px-8 py-4 rounded-2xl text-center font-bold text-lg border-2 border-gold text-gold hover:bg-gold-light transition-all bg-white/50">
-                        Tanya Kurikulum ✨
+                    <a href="https://wa.me/6285871509096?text=Halo%20saya%20tertarik%20dengan%20les%20/%20privat%20pembelajaran%20di%20Halawie%20Education!" class="btn-gold px-10 py-4 rounded-2xl text-center font-bold text-lg">Daftar Kelas Trial</a>
+                    <a href="#paket" class="px-8 py-4 rounded-2xl text-center font-bold text-lg border-2 border-gold text-gold hover:bg-gold-light transition-all bg-white/50">
+                        Lihat Kurikulum
                     </a>
                 </div>
             </div>
             <div class="relative reveal active hidden md:block">
-                <div class="hero-frame overflow-hidden aspect-[4/5] bg-white flex items-center justify-center relative">
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800&auto=format&fit=crop" alt="Anak Muslimah Belajar Kreatif" class="w-full h-full object-cover">
-                    
-                    <div class="absolute bottom-4 left-4 right-4 bg-white/95 p-4 rounded-xl shadow-lg border border-gold-light">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                            <p class="text-xs font-bold text-maroon uppercase tracking-widest">Sesi Belajar Aktif</p>
-                        </div>
-                        <p class="text-[10px] text-gray-600 italic leading-snug">"Membangun kedekatan antara pengajar dan murid untuk hasil maksimal."</p>
+                <div class="hero-frame overflow-hidden aspect-[4/5] bg-white relative">
+                    <!-- Image of a young girl in a neat hijab studying with a book -->
+                    <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=800&auto=format&fit=crop" alt="Anak Muslimah Berhijab Belajar" class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 right-4 bg-white/95 px-5 py-3 rounded-2xl border border-gold shadow-lg">
+                        <p class="text-[10px] text-maroon font-bold uppercase tracking-widest mb-1">Mencetak Generasi Beradab</p>
+                        <p class="text-[8px] text-gray-500 italic">"Ilmu tanpa adab seperti api tanpa kayu bakar."</p>
                     </div>
                 </div>
             </div>
@@ -153,10 +190,11 @@
     </section>
 
     <!-- Program Section -->
-    <section id="program" class="py-24 bg-white">
+    <section id="program" class="py-24 bg-white relative">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl font-serif text-maroon mb-2">Program Unggulan</h2>
+                <h2 class="text-3xl md:text-4xl font-serif text-maroon mb-2">Program Unggulan</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
                 <p class="text-gray-500">Kurikulum terintegrasi untuk kecerdasan spiritual dan intelektual</p>
             </div>
 
@@ -164,100 +202,149 @@
                 <div class="card-program p-8 reveal">
                     <div class="w-12 h-12 bg-gold-light rounded-xl flex items-center justify-center text-2xl mb-6">📖</div>
                     <h3 class="font-bold text-lg mb-3">Metode Ummi</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Belajar mengaji dengan tartil, mudah, dan menyenangkan sesuai kaidah tajwid yang benar.</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Belajar mengaji dengan tartil, mudah, dan menyenangkan sesuai kaidah tajwid.</p>
                 </div>
                 <div class="card-program p-8 reveal">
                     <div class="w-12 h-12 bg-gold-light rounded-xl flex items-center justify-center text-2xl mb-6">💻</div>
                     <h3 class="font-bold text-lg mb-3">Digital Kreatif</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Edukasi desain grafis menggunakan Canva & tools digital lainnya untuk mengasah kreativitas sejak dini.</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Edukasi desain grafis menggunakan Canva & tools digital sejak dini.</p>
                 </div>
                 <div class="card-program p-8 reveal">
                     <div class="w-12 h-12 bg-gold-light rounded-xl flex items-center justify-center text-2xl mb-6">📐</div>
                     <h3 class="font-bold text-lg mb-3">Akademik Fokus</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Bantuan belajar IPAS, Matematika, dan Pelajaran lainnya Yang disesuikan dengan minat atau pilihan ananda.</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Bantuan belajar IPAS, Matematika, dan Pelajaran lainnya.</p>
                 </div>
                 <div class="card-program p-8 reveal">
                     <div class="w-12 h-12 bg-gold-light rounded-xl flex items-center justify-center text-2xl mb-6">🕌</div>
                     <h3 class="font-bold text-lg mb-3">Adab & Diniyah</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Pembiasaan doa harian, hafalan surat pendek, dan penanaman adab islami.</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Pembiasaan doa harian, hafalan surat pendek, dan adab islami.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AI Assistant Section -->
-    <section id="ai-assistant" class="py-20 bg-cream">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-white rounded-[40px] border-2 border-gold-light p-8 md:p-12 shadow-sm reveal">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-serif text-maroon mb-2">Tanya AI Yuk!</h2>
-                    <span class="text-3xl">✨</span>
-                    <h2 class="text-2xl font-serif text-maroon mt-2">Asisten Kurikulum Pintar</h2>
-                    <p class="text-gray-500 text-sm">Coba tanya AI kami tentang kebutuhan belajar anak Anda</p>
-                </div>
-                
-                <div class="space-y-6">
-                    <textarea id="ai-input" placeholder="Contoh: Anak saya kelas 3 SD, senang menggambar..." class="w-full px-5 py-4 rounded-2xl bg-cream border-2 border-gold-light/30 focus:border-gold outline-none min-h-[120px] text-sm"></textarea>
-                    <button id="ai-btn" class="w-full btn-gold py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2">
-                        <span>Dapatkan Rekomendasi ✨</span>
-                        <div id="ai-loader" class="spinner hidden"></div>
-                    </button>
-                    <div id="ai-response" class="hidden mt-8 p-6 rounded-2xl bg-cream border border-gold-light/50 text-sm leading-relaxed text-gray-700 whitespace-pre-line"></div>
-                </div>
+            <div class="mt-12 text-center reveal">
+                <p class="text-maroon font-arabic text-3xl mb-4">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
+                <p class="text-gray-500 text-xs italic">"Sebaik-baik kalian adalah orang yang belajar Al-Qur'an dan mengajarkannya." (HR. Bukhari)</p>
             </div>
         </div>
     </section>
 
-    <!-- Pilihan Paket Belajar -->
+    <!-- Pelajaran Pilihan Section -->
     <section id="paket" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-serif text-maroon mb-2">Pelajaran Pilihan</h2>
+                <p class="text-gray-500">Pilih program belajar sesuai jenjang pendidikan ananda</p>
+            </div>
+            
             <div class="grid md:grid-cols-3 gap-8 items-stretch">
-                <h2 class="text-3xl font-serif text-maroon mb-2">Pilihan Paket</h2>
                 <!-- Paket TK -->
                 <div class="bg-cream border border-gold-light rounded-[40px] p-8 reveal flex flex-col shadow-sm">
                     <h3 class="text-2xl font-bold mb-2">Kelas TK</h3>
-                    <span class="text-3xl font-bold text-maroon">Rp 60.000</span>
-                    <p class="text-gray-400 text-sm mb-6">/ Sesi</p>
-                    <ul class="text-sm space-y-3 mb-8 text-gray-600">
-                        <li>📖 Metode Ummi & Hijaiyah</li>
-                        <li>🎨 Mewarnai & Motorik</li>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-3xl font-bold text-maroon">Rp 60k</span>
+                        <span class="text-gray-400 text-sm">/ Sesi</span>
+                    </div>
+                    <div class="my-6 border-t border-gold-light opacity-50"></div>
+                    <ul class="text-sm space-y-4 mb-8 text-gray-600 plain-list">
+                        <li>Metode Ummi & Hijaiyah</li>
+                        <li>Mewarnai & Motorik</li>
+                        <li>Pengenalan Adab Dasar</li>
+                        <li>Sesi 60 Menit</li>
                     </ul>
-                    <a href="https://wa.me/6285871509096" class="mt-auto w-full py-3 rounded-2xl border border-maroon text-maroon text-center font-bold">Pilih Paket</a>
+                    <a href="https://wa.me/6285871509096?text=Halo%20saya%20tertarik%20dengan%20les%20/%20privat%20pembelajaran%20di%20Halawie%20Education!" class="mt-auto w-full py-3 rounded-2xl border border-maroon text-maroon text-center font-bold hover:bg-maroon hover:text-white transition-colors">Pilih Program</a>
                 </div>
 
                 <!-- Paket SD -->
-                <div class="bg-white border-2 border-gold rounded-[40px] p-8 reveal active flex flex-col shadow-xl relative scale-105 z-10">
+                <div class="bg-white border-2 border-gold rounded-[40px] p-8 reveal flex flex-col shadow-xl relative md:scale-105 z-10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-md">Paling Diminati</div>
                     <h3 class="text-2xl font-bold mb-2 text-maroon">Kelas SD</h3>
-                    <span class="text-3xl font-bold text-maroon">Rp 75.000</span>
-                    <p class="text-gray-400 text-sm mb-6">/ Sesi</p>
-                    <ul class="text-sm space-y-3 mb-8 text-gray-700">
-                        <li>📖 Tartil Ummi & Tajwid</li>
-                        <li>💻 Desain Dasar (Canva)</li>
-                        <li>📐 IPAS, Matematika & Pelajaran lainnya</li>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-3xl font-bold text-maroon">Rp 75k</span>
+                        <span class="text-gray-400 text-sm">/ Sesi</span>
+                    </div>
+                    <div class="my-6 border-t border-gold-light opacity-50"></div>
+                    <ul class="text-sm space-y-4 mb-8 text-gray-700 plain-list font-medium">
+                        <li>Tartil Ummi & Tajwid</li>
+                        <li>Desain Dasar (Canva)</li>
+                        <li>IPAS, Matematika & Tematik</li>
+                        <li>Pendampingan Tugas Sekolah</li>
+                        <li>Sesi 90 Menit</li>
                     </ul>
-                    <a href="https://wa.me/6285871509096" class="mt-auto w-full py-4 rounded-2xl btn-gold text-center font-bold">Daftar Sekarang</a>
+                    <a href="https://wa.me/6285871509096?text=Halo%20saya%20tertarik%20dengan%20les%20/%20privat%20pembelajaran%20di%20Halawie%20Education!" class="mt-auto w-full py-4 rounded-2xl btn-gold text-center font-bold">Daftar Sekarang</a>
                 </div>
 
                 <!-- Paket SMP -->
                 <div class="bg-cream border border-gold-light rounded-[40px] p-8 reveal flex flex-col shadow-sm">
                     <h3 class="text-2xl font-bold mb-2">Kelas SMP</h3>
-                    <span class="text-3xl font-bold text-maroon">Rp 90.000</span>
-                    <p class="text-gray-400 text-sm mb-6">/ Sesi</p>
-                    <ul class="text-sm space-y-3 mb-8 text-gray-600">
-                        <li>🚀 Desain Expert</li>
-                        <li>📚 Matematika, IPAS & Pelajaran Laiinya</li>
-                        <li>📖 Fiqih Dasar & Adab Bergaul</li>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-3xl font-bold text-maroon">Rp 90k</span>
+                        <span class="text-gray-400 text-sm">/ Sesi</span>
+                    </div>
+                    <div class="my-6 border-t border-gold-light opacity-50"></div>
+                    <ul class="text-sm space-y-4 mb-8 text-gray-600 plain-list">
+                        <li>Desain Digital Expert</li>
+                        <li>Matematika & IPA Terapan</li>
+                        <li>Tahsin & Fiqih Remaja</li>
+                        <li>Pendalaman Materi Sekolah</li>
+                        <li>Sesi 90 Menit</li>
                     </ul>
-                    <a href="https://wa.me/6285871509096" class="mt-auto w-full py-3 rounded-2xl border border-maroon text-maroon text-center font-bold">Pilih Paket</a>
+                    <a href="https://wa.me/6285871509096?text=Halo%20saya%20tertarik%20dengan%20les%20/%20privat%20pembelajaran%20di%20Halawie%20Education!" class="mt-auto w-full py-3 rounded-2xl border border-maroon text-maroon text-center font-bold hover:bg-maroon hover:text-white transition-colors">Pilih Program</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-12 px-6 text-center">
-        <p class="text-gold font-bold text-xl mb-4">Halawie Education</p>
-        <p class="text-gray-500 text-sm">© 2022 Membimbing dengan hati, menanamkan adab.</p>
+    <footer class="bg-maroon text-white py-16 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 pointer-events-none islamic-pattern"></div>
+        
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 relative z-10">
+            <div class="reveal">
+                <div class="flex items-center gap-3 mb-6">
+                    <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Logo White" class="h-12 w-auto brightness-0 invert">
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold leading-none text-gold">Halawie</span>
+                        <span class="text-[10px] tracking-[0.2em] text-white/70 uppercase">Education</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gold-light/70 leading-relaxed italic">
+                    "Membimbing dengan hati, menanamkan adab, dan mencetak generasi emas yang melek teknologi tanpa meninggalkan nilai Islami."
+                </p>
+            </div>
+
+            <div class="reveal">
+                <h4 class="text-gold font-bold mb-6 uppercase tracking-widest text-sm text-center md:text-left">Layanan Kami</h4>
+                <ul class="space-y-4 text-sm text-gold-light/60 text-center md:text-left">
+                    <li>Privat Home Visit</li>
+                    <li>Kelas Digital Kreatif</li>
+                    <li>Pendampingan Akademik</li>
+                    <li>Program Tahsin Ummi</li>
+                </ul>
+            </div>
+
+            <div class="reveal">
+                <h4 class="text-gold font-bold mb-6 uppercase tracking-widest text-sm text-center md:text-left">Hubungi Kami</h4>
+                <div class="space-y-4 text-sm text-gold-light/60 flex flex-col items-center md:items-start">
+                    <p class="flex items-center gap-3">
+                        <span class="text-lg">📍</span>
+                        Tasikmalaya, Jawa Barat
+                    </p>
+                    <a href="https://wa.me/6285871509096" class="flex items-center gap-3 hover:text-gold transition-colors">
+                        <span class="text-lg">💬</span>
+                        0858-7150-9096
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto border-t border-white/10 mt-16 pt-8 flex flex-col items-center gap-6 relative z-10">
+            <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Logo Footer" class="h-16 w-auto brightness-0 invert opacity-50">
+            <p class="text-[10px] text-white/30 tracking-widest uppercase text-center">
+                © 2024 Halawie Education. Dioptimasi untuk Masa Depan Islami.
+            </p>
+        </div>
     </footer>
 
     <script>
@@ -271,46 +358,25 @@
                 }
             }
         }
+
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('open');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
         window.addEventListener("scroll", reveal);
         window.onload = reveal;
-
-        const apiKey = ""; 
-        const aiInput = document.getElementById('ai-input');
-        const aiBtn = document.getElementById('ai-btn');
-        const aiResponse = document.getElementById('ai-response');
-        const aiLoader = document.getElementById('ai-loader');
-
-        aiBtn.addEventListener('click', async () => {
-            const query = aiInput.value.trim();
-            if (!query) return;
-
-            aiBtn.disabled = true;
-            aiLoader.classList.remove('hidden');
-            aiResponse.classList.add('hidden');
-
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: query }] }],
-                        systemInstruction: { parts: [{ text: "Kamu asisten Halawie Education. Rekomendasikan paket belajar (TK, SD, SMP). Fokus IPAS, Matematika, Pelajaran lainnya." }] }
-                    })
-                });
-                const result = await response.json();
-                aiResponse.textContent = result.candidates[0].content.parts[0].text;
-                aiResponse.classList.remove('hidden');
-            } catch (e) {
-                aiResponse.textContent = "Hubungi WhatsApp kami untuk konsultasi langsung ya!";
-                aiResponse.classList.remove('hidden');
-            }
-
-            aiBtn.disabled = false;
-            aiLoader.classList.add('hidden');
-        });
     </script>
 </body>
 </html>
-
-
-
