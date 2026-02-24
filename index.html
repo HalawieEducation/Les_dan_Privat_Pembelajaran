@@ -4,246 +4,516 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halawie Education - Generasi Al-Qur'an & Kreatif Digital</title>
-    <!-- Tailwind CSS for modern styling -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --merah-tua: #800000;
             --emas-tua: #B8860B;
-            --hitam-pudar: #222222;
+            --hitam-pudar: #121212;
         }
         
         body {
             background-color: var(--hitam-pudar);
-            /* Menambahkan Background Utama */
-            background-image: linear-gradient(rgba(34, 34, 34, 0.85), rgba(34, 34, 34, 0.95)), 
-                              url('https://drive.google.com/thumbnail?id=19tTypYAO461vKCvZE9a60KAsB8bmw3SZ&sz=w1000');
+            background-image: linear-gradient(rgba(18, 18, 18, 0.92), rgba(18, 18, 18, 0.96)), 
+                              url('https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&q=80');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
             color: white;
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        .bg-maroon { background-color: var(--merah-tua); }
-        .text-gold { color: var(--emas-tua); }
-        .border-gold { border-color: var(--emas-tua); }
-        .hover-gold:hover { background-color: var(--emas-tua); color: var(--merah-tua); }
-        
-        .card-glass {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .card-glass:hover {
-            border-color: var(--emas-tua);
-            transform: translateY(-5px);
-            background: rgba(128, 0, 0, 0.2);
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, #B8860B, #FFD700, #B8860B);
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f1d592 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .price-card {
-            border-top: 4px solid var(--emas-tua);
-            backdrop-filter: blur(8px);
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.3);
         }
 
-        /* Smooth scroll */
-        html { scroll-behavior: smooth; }
+        .program-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .program-card:hover {
+            border-color: #d4af37;
+            background: linear-gradient(180deg, rgba(212,175,55,0.08) 0%, rgba(139,0,0,0.05) 100%);
+            transform: translateY(-8px);
+        }
+        
+        .page-content { display: none; }
+        .page-content.active { display: block; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #8b0000; border-radius: 10px; }
+
+        .testimony-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .testimony-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-container {
+            transition: all 0.4s ease;
+        }
+        .logo-container:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
     </style>
 </head>
-<body>
+<body class="min-h-screen pb-20">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-[#222222]/90 backdrop-blur-md border-b border-gold/20">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="https://drive.google.com/thumbnail?id=1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl&sz=w200" alt="Halawie Logo" class="h-10 w-10 rounded-full border border-gold">
-                <span class="font-bold text-lg text-gold tracking-wider uppercase">HALAWIE EDUCATION</span>
+    <!-- Sticky Header -->
+    <nav class="sticky top-0 z-50 bg-[#121212]/85 backdrop-blur-md border-b border-white/10 px-6 py-3">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer group" onclick="showPage('home')">
+                <!-- Logo with Gold Ring -->
+                <div class="logo-container w-12 h-12 rounded-full border-2 border-[#d4af37] p-[2px] shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-white">
+                    <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Halawie Logo" class="w-full h-full rounded-full object-cover">
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight leading-none uppercase text-white group-hover:text-[#d4af37] transition-colors">Halawie</h1>
+                    <span class="text-[10px] text-[#d4af37] tracking-[0.2em] uppercase font-semibold">Education</span>
+                </div>
             </div>
-            <a href="https://wa.me/6285871509096?text=Bismillah,%20Assalamualaikum.%20saya%20tertarik%20dengan%20Les%20&%20Privat%20Pembelajaran%20Halawie%20Educatio!" 
-               class="bg-maroon text-gold px-4 py-2 rounded-full text-sm font-bold border border-gold hover:bg-gold hover:text-maroon transition-all">
-                Daftar Sekarang
-            </a>
+            
+            <div class="flex gap-4">
+                <button onclick="showPage('login')" class="text-[10px] md:text-xs font-bold border border-[#d4af37]/50 px-5 py-2 rounded-full hover:bg-[#d4af37] hover:text-black transition-all text-[#d4af37] tracking-widest uppercase">Member Portal</button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative pt-40 pb-24 px-4 flex flex-col items-center text-center overflow-hidden">
-        <!-- Efek Glow tambahan -->
-        <div class="absolute top-20 w-80 h-80 bg-gold/10 rounded-full blur-[120px] -z-10"></div>
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-6 mt-12">
         
-        <!-- Font size adjusted to text-3xl (mobile) and text-5xl (desktop) -->
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-6 gradient-text uppercase tracking-tight leading-tight">
-            Generasi Al-Qur'an &<br>Kreatif Digital
-        </h1>
-        <p class="text-gray-200 max-w-2xl text-lg md:text-xl mb-10 leading-relaxed shadow-sm">
-            Privat TK, SD, SMP: Metode Ummi, Bahasa Arab, & Desain Grafis. Kami membimbing putra-putri Anda menjadi pribadi yang religius dan mahir teknologi.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-            <a href="https://wa.me/6285871509096?text=Bismillah,%20Assalamualaikum.%20Saya%20ingin%20mendaftar%20Kelas%20Trial." 
-               class="bg-maroon text-gold px-10 py-4 rounded-full font-bold text-xl border-2 border-gold shadow-[0_0_20px_rgba(184,134,11,0.3)] hover:scale-105 transition-all">
-                Daftar Kelas Trial
-            </a>
-        </div>
-    </header>
-
-    <!-- Program Unggulan -->
-    <section class="py-20 px-4 max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-16 text-gold italic flex items-center justify-center gap-4">
-            <span class="h-[1px] w-12 bg-gold/50"></span>
-            Program Unggulan
-            <span class="h-[1px] w-12 bg-gold/50"></span>
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Card 1 -->
-            <div class="card-glass p-8 rounded-3xl text-center">
-                <div class="w-16 h-16 bg-maroon/40 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-gold/50 rotate-3">
-                    <i data-lucide="book-open" class="text-gold w-8 h-8"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gold">Metode Ummi</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">Mengaji tartil, lancar, dan beradab sesuai standar kualitas Ummi Foundation.</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="card-glass p-8 rounded-3xl text-center">
-                <div class="w-16 h-16 bg-maroon/40 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-gold/50 -rotate-3">
-                    <i data-lucide="calculator" class="text-gold w-8 h-8"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gold">IPAS & Matematika</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">Menaklukkan angka dan sains dengan logika yang menyenangkan dan aplikatif.</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="card-glass p-8 rounded-3xl text-center">
-                <div class="w-16 h-16 bg-maroon/40 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-gold/50 rotate-3">
-                    <i data-lucide="languages" class="text-gold w-8 h-8"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gold">Bahasa Arab</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">Komunikasi seru & aplikatif untuk memahami bahasa Al-Qur'an sejak dini.</p>
-            </div>
-            <!-- Card 4 -->
-            <div class="card-glass p-8 rounded-3xl text-center">
-                <div class="w-16 h-16 bg-maroon/40 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-gold/50 -rotate-3">
-                    <i data-lucide="palette" class="text-gold w-8 h-8"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gold">Desain Grafis</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">Mengasah kreativitas digital dan kemampuan visual di era modern.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Keunggulan -->
-    <section class="py-12 bg-maroon/20 backdrop-blur-sm border-y border-gold/20">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="group">
-                    <h4 class="text-gold font-bold mb-1 group-hover:scale-110 transition-transform">Kurikulum Terarah</h4>
-                    <p class="text-xs text-gray-400">Standard Ummi & Standar kurikulum Nasional</p>
-                </div>
-                <div class="group">
-                    <h4 class="text-gold font-bold mb-1 group-hover:scale-110 transition-transform">Guru Sabar & Ahli</h4>
-                    <p class="text-xs text-gray-400">Dedikasi Tinggi</p>
-                </div>
-                <div class="group">
-                    <h4 class="text-gold font-bold mb-1 group-hover:scale-110 transition-transform">Jadwal Fleksibel</h4>
-                    <p class="text-xs text-gray-400">Menyesuaikan Siswa</p>
-                </div>
-                <div class="group">
-                    <h4 class="text-gold font-bold mb-1 group-hover:scale-110 transition-transform">Laporan Rutin</h4>
-                    <p class="text-xs text-gray-400">Monitoring Progres</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Paket Pilihan -->
-    <section class="py-24 px-4 max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-16 gradient-text uppercase tracking-wider">Pilihan Tingkat Belajar</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- TK -->
-            <div class="price-card bg-black/60 p-8 rounded-3xl flex flex-col border border-gold/20 card-glass">
-                <h3 class="text-2xl font-bold mb-2 uppercase tracking-wide">Level TK</h3>
-                <p class="text-gold text-3xl font-bold mb-6">Rp 60.000 <span class="text-sm font-normal text-gray-400 italic">/ 35 Menit</span></p>
-                <ul class="text-sm text-gray-300 space-y-4 mb-8 flex-grow">
-                    <li class="flex items-center gap-3"><i data-lucide="sparkles" class="w-5 h-5 text-gold"></i> Metode Ummi</li>
-                    <li class="flex items-center gap-3"><i data-lucide="sparkles" class="w-5 h-5 text-gold"></i> Calistung</li>
-                    <li class="flex items-center gap-3"><i data-lucide="sparkles" class="w-5 h-5 text-gold"></i> Motorik & Mewarnai</li>
-                    <li class="flex items-center gap-3"><i data-lucide="sparkles" class="w-5 h-5 text-gold"></i> Adab Sehari-Hari</li>
-                </ul>
-                <a href="https://wa.me/6285871509096?text=Halo,%20saya%20tertarik%20mendaftarkan%20anak%20saya%20untuk%20level%20TK." class="w-full py-4 border-2 border-gold rounded-xl text-center font-bold text-gold hover:bg-gold hover:text-maroon transition-all uppercase text-xs tracking-widest">Pilih Paket TK</a>
-            </div>
-            
-            <!-- SD -->
-            <div class="price-card bg-maroon/80 p-8 rounded-3xl flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] scale-105 border-2 border-gold relative z-10">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-maroon text-[10px] font-black px-4 py-1 rounded-full shadow-lg whitespace-nowrap tracking-tighter">FAVORIT ORANG TUA</div>
-                <h3 class="text-2xl font-bold mb-2 text-white uppercase tracking-wide">Level SD</h3>
-                <p class="text-gold text-4xl font-black mb-6 italic">Rp 75.000 <span class="text-sm font-normal text-white/70">/ 45 Menit</span></p>
-                <ul class="text-sm text-white/90 space-y-4 mb-8 flex-grow">
-                    <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-gold"></i> Metode Ummi</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-gold"></i> IPAS & Matematika</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-gold"></i> Bahasa Arab & Desain</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-gold"></i> Adab Sehari-Hari</li>
-                </ul>
-                <a href="https://wa.me/6285871509096?text=Halo,%20saya%20tertarik%20mendaftarkan%20anak%20saya%20untuk%20level%20SD." class="w-full py-4 bg-gold text-maroon rounded-xl text-center font-black shadow-xl hover:bg-white transition-all transform hover:scale-105 uppercase text-xs tracking-widest">Pilih Paket SD</a>
+        <!-- PAGE: HOME -->
+        <div id="page-home" class="page-content active">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-serif mb-6 leading-tight">Membentuk Generasi <br><span class="gold-gradient italic">Generasi Al-quran yang Melek Digital</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg"> Les Khusus Anak SD Untuk Pembelajaran Al-Qur'an Metode UMMI, IPAS, Matematika, Bahasa Arab & Desain Grafis.</p>
             </div>
 
-            <!-- SMP -->
-            <div class="price-card bg-black/60 p-8 rounded-3xl flex flex-col border border-gold/20 card-glass">
-                <h3 class="text-2xl font-bold mb-2 uppercase tracking-wide">Level SMP</h3>
-                <p class="text-gold text-3xl font-bold mb-6">Rp 90.000 <span class="text-sm font-normal text-gray-400 italic">/ 60 Menit</span></p>
-                <ul class="text-sm text-gray-300 space-y-4 mb-8 flex-grow">
-                    <li class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-gold"></i> IPAS & Matematika</li>
-                    <li class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-gold"></i> Bahasa Arab & Desain</li>
-                    <li class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-gold"></i> Fiqih Dasar</li>
-                    <li class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-gold"></i> Adab Sehari-Hari</li>
-                </ul>
-                <a href="https://wa.me/6285871509096?text=Halo,%20saya%20tertarik%20mendaftarkan%20anak%20saya%20untuk%20level%20SMP." class="w-full py-4 border-2 border-gold rounded-xl text-center font-bold text-gold hover:bg-gold hover:text-maroon transition-all uppercase text-xs tracking-widest">Pilih Paket SMP</a>
-            </div>
-        </div>
-    </section>
+            <!-- DASHBOARD NAV -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+                <div onclick="showPage('jadwal')" class="nav-card bg-white/5 border border-white/10 p-8 rounded-3xl cursor-pointer transition-all flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-[#8b0000]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#8b0000] transition-colors">
+                        <i data-lucide="calendar" class="w-8 h-8 text-[#d4af37]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Jadwal Booking</h3>
+                    <p class="text-gray-500 text-sm">Pesan sesi konsultasi atau kelas privat secara langsung.</p>
+                </div>
 
-    <!-- Footer -->
-    <footer class="bg-black/90 py-16 px-4 border-t border-gold/30 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="text-center md:text-left">
-                <div class="flex items-center gap-4 mb-4 justify-center md:justify-start">
-                    <img src="https://drive.google.com/thumbnail?id=1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl&sz=w200" alt="Logo" class="w-14 h-14 rounded-full border-2 border-gold p-1">
-                    <div>
-                        <span class="text-gold font-black text-xl block tracking-widest">HALAWIE</span>
-                        <span class="text-white/60 text-xs tracking-[0.3em] uppercase">Education</span>
+                <div onclick="showPage('pembayaran')" class="nav-card bg-white/5 border border-white/10 p-8 rounded-3xl cursor-pointer transition-all flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-[#d4af37]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#d4af37] transition-colors">
+                        <i data-lucide="credit-card" class="w-8 h-8 text-[#d4af37] group-hover:text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pembayaran</h3>
+                    <p class="text-gray-500 text-sm">Konfirmasi pembayaran biaya pendidikan Anda dengan aman.</p>
+                </div>
+
+                <div onclick="document.getElementById('section-testimoni').scrollIntoView({behavior: 'smooth'})" class="nav-card bg-white/5 border border-white/10 p-8 rounded-3xl cursor-pointer transition-all flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                        <i data-lucide="message-square" class="w-8 h-8 text-blue-400 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Suara Pelanggan</h3>
+                    <p class="text-gray-500 text-sm">Lihat testimoni anggota atau tulis kesan Anda di sini.</p>
+                </div>
+            </div>
+
+            <!-- SECTION: PROGRAM UNGGULAN -->
+            <section class="mb-24">
+                <div class="flex flex-col items-center text-center mb-12">
+                    <span class="text-[#d4af37] text-xs font-bold tracking-[0.3em] uppercase mb-4">The Best Choice</span>
+                    <h2 class="text-3xl md:text-5xl font-serif">Program <span class="text-[#d4af37]">Unggulan</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Tahfidz Card -->
+                    <div class="program-card border border-white/10 rounded-[2.5rem] p-8 flex flex-col h-full">
+                        <div class="mb-8">
+                            <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest">Islamic Foundation</span>
+                            <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest">5x Pertemuan @ 60 Menit</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Paket 1</h3>
+                        <h3 class="text-2xl font-bold mb-4">Metode Ummi & Arabic Mastery</h3>
+                        <h3 class="text-2xl font-bold mb-4">RP. 350.000</h3>
+                        <p class="text-gray-400 text-sm mb-8 flex-grow">Fokus pada kelancaran membaca Al-Quran dengan tartil metode Ummi dan Penguasaan bahasa Arab komunikatif (Fashahah).</p>
+                        <ul class="space-y-4 mb-10 text-sm text-gray-300">
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Privat Khusus 7 Murid saja</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Privat Intensif & Halaqah Kecil</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Monitoring Harian</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Daily Language Habit</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Syahdah Ummi</li>
+                        </ul>
+                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-white/5 hover:bg-[#d4af37] hover:text-black border border-white/10 rounded-2xl font-bold transition-all uppercase text-xs tracking-widest">Ambil Paket Ini</button>
+                    </div>
+
+                    <!-- Digital Card -->
+                    <div class="program-card border border-[#d4af37]/40 rounded-[2.5rem] p-8 flex flex-col h-full relative overflow-hidden bg-[#1a1a1a]/50">
+                        <div class="mb-8">
+                            <span class="bg-blue-600/30 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/20 uppercase tracking-widest">Future Skill</span>
+                            <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest">5x Pertemuan @ 60 Menit</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Paket 2</h3>
+                        <h3 class="text-2xl font-bold mb-4">STEM Logic (Ipas & Matematika)</h3>
+                        <h3 class="text-2xl font-bold mb-4">RP. 450.000</h3>
+                        <p class="text-gray-400 text-sm mb-8 flex-grow">Belajar menaklukan angka dan sains dengan logika yang menyenangkan dan aplikatif.</p>
+                        <ul class="space-y-4 mb-10 text-sm text-gray-300">
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Privat Khusus 7 Murid saja</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Problem Solving 1-on-1</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Laporan Progres Kognitif</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Portofolio Project & Eksperimen</li>
+                        </ul>
+                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-[#d4af37] text-black border border-[#d4af37] rounded-2xl font-bold hover:scale-105 transition-all uppercase text-xs tracking-widest">Pilih STEM Logic</button>
+                    </div>
+
+                    <!-- VIP Card -->
+                    <div class="program-card border border-white/10 rounded-[2.5rem] p-8 flex flex-col h-full">
+                        <div class="mb-8">
+                            <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest">Creative Designer</span>
+                            <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest">4x pertemuan @45 Menit</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Paket 3 (VIP)</h3>
+                        <h3 class="text-2xl font-bold mb-4">Creative Design Studio</h3>
+                        <h3 class="text-2xl font-bold mb-4">RP. 500.000</h3>
+                        <p class="text-gray-400 text-sm mb-8 flex-grow">Fokus pada penguasaan teknik desain lanjutan, estetika visual dan penguasaan software.</p>
+                        <ul class="space-y-4 mb-10 text-sm text-gray-300">
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Khusus untuk 3 Siswa Saja</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Monitoring Desain Berbasis Proyek</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Riview & Feedback Visual</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Digital Portofolio Ready</li>
+                        </ul>
+                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-white/5 hover:bg-[#d4af37] hover:text-black border border-white/10 rounded-2xl font-bold transition-all uppercase text-xs tracking-widest">Pesan VIP</button>
                     </div>
                 </div>
-                <p class="text-gray-400 text-sm max-w-sm">Privat & Les Personal fokus pada penguatan karakter Qur'ani dan kecakapan digital masa depan.</p>
-            </div>
-            
-            <div class="flex flex-col items-center md:items-end gap-4">
-                <div class="flex items-center gap-3 text-gray-200 bg-white/5 px-6 py-2 rounded-full border border-white/10">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-gold"></i> 
-                    <span>Online / Privat ke Rumah</span>
+            </section>
+
+            <!-- SECTION: TESTIMONI -->
+            <section id="section-testimoni" class="mb-24 scroll-mt-24">
+                <div class="bg-[#1a1a1a]/60 rounded-[3rem] border border-white/5 p-8 md:p-12 backdrop-blur-sm">
+                    <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+                        <div class="text-center md:text-left">
+                            <span class="text-[#d4af37] text-xs font-bold tracking-[0.3em] uppercase mb-2 block">Mereka yang Sudah Bergabung</span>
+                            <h2 class="text-3xl font-serif text-white uppercase tracking-wider">Suara <span class="text-[#d4af37]">Pelanggan</span></h2>
+                        </div>
+                        <button onclick="toggleTestimonyForm()" class="px-7 py-3.5 bg-[#8b0000]/20 text-[#d4af37] rounded-xl text-xs font-bold border border-[#d4af37]/30 hover:bg-[#8b0000] hover:text-white transition-all flex items-center gap-2 group">
+                            <i data-lucide="edit-3" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i> BAGIKAN PENGALAMAN
+                        </button>
+                    </div>
+
+                    <!-- Form Testimoni -->
+                    <div id="testimony-form" class="hidden mb-12 bg-[#222] p-8 rounded-3xl border border-[#d4af37]/30 shadow-2xl animate-fadeIn">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" id="testi-name" placeholder="Nama Lengkap" class="bg-black/50 border border-white/10 p-4 rounded-xl outline-none focus:border-[#d4af37] text-sm text-white">
+                            <input type="text" id="testi-job" placeholder="Profesi / Domisili" class="bg-black/50 border border-white/10 p-4 rounded-xl outline-none focus:border-[#d4af37] text-sm text-white">
+                        </div>
+                        <textarea id="testi-msg" rows="4" placeholder="Bagaimana kesan Anda belajar di Halawie Education?" class="w-full bg-black/50 border border-white/10 p-4 rounded-xl outline-none focus:border-[#d4af37] mb-6 text-sm text-white"></textarea>
+                        <div class="flex justify-end">
+                            <button onclick="addTestimony()" class="bg-[#d4af37] text-black px-12 py-3.5 rounded-xl font-bold hover:scale-105 transition-all shadow-lg text-xs uppercase tracking-widest">Kirim Testimoni</button>
+                        </div>
+                    </div>
+
+                    <div id="testimony-list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Testimony 1 -->
+                        <div class="testimony-card p-10 rounded-[2.5rem] relative">
+                            <i data-lucide="quote" class="absolute top-8 right-10 w-12 h-12 text-white/5"></i>
+                            <p class="text-gray-400 italic mb-8 leading-relaxed text-sm">"Belajar di Halawie sangat fleksibel. Selain hafalannya dapet, ilmu digitalnya juga nambah banget buat dukung aktivitas dakwah saya."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border border-[#d4af37]/40 p-1">
+                                    <div class="w-full h-full rounded-full bg-[#333] flex items-center justify-center">
+                                        <i data-lucide="user" class="w-6 h-6 text-gray-400"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#d4af37]">Ikhwan Malik</p>
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Entrepreneur - Bandung</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimony 2 -->
+                        <div class="testimony-card p-10 rounded-[2.5rem] relative">
+                            <i data-lucide="quote" class="absolute top-8 right-10 w-12 h-12 text-white/5"></i>
+                            <p class="text-gray-400 italic mb-8 leading-relaxed text-sm">"Program VIP Privatnya juara! Pengajarnya sangat kompeten dan materi desain grafisnya benar-benar dari nol sampai bisa buat portofolio."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border border-[#d4af37]/40 p-1">
+                                    <div class="w-full h-full rounded-full bg-[#333] flex items-center justify-center">
+                                        <i data-lucide="user" class="w-6 h-6 text-gray-400"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#d4af37]">Bunda Nayla</p>
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Ibu Rumah Tangga - Jakarta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://wa.me/6285871509096?text=Bismillah,%20Assalamualaikum.%20saya%20tertarik%20dengan%20Les%20&%20Privat%20Pembelajaran%20Halawie%20Educatio!" 
-                   class="bg-green-600/20 hover:bg-green-600 text-white px-6 py-3 rounded-2xl flex items-center gap-3 transition-all border border-green-500/30 group">
-                   <i data-lucide="phone" class="w-5 h-5 group-hover:animate-bounce"></i>
-                   <span class="font-bold">+62 858-7150-9096</span>
-                </a>
+            </section>
+
+            <!-- Footer Card -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 bg-white/5 p-10 rounded-[40px] border border-white/10 shadow-2xl">
+                <div class="flex items-center gap-5">
+                    <div class="w-16 h-16 rounded-full border-2 border-[#d4af37] p-[2px]">
+                        <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Founder" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <div>
+                        <p class="text-[#d4af37] font-bold text-lg">M Husni Yasir Rabani, M.Pd</p>
+                        <p class="text-gray-500 text-sm italic">Founder & Lead Mentor Halawie</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center md:items-end gap-3">
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Butuh Konsultasi?</p>
+                    <a href="https://wa.me/6285871509096" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-2xl flex items-center gap-3 transition-all shadow-xl font-bold group">
+                        <i data-lucide="phone-call" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        Chat Admin Sekarang
+                    </a>
+                </div>
+            </div>
+            <p class="text-center mt-12 text-gray-600 text-[10px] uppercase tracking-[0.4em]">© 2024 Halawie Education • All Rights Reserved</p>
+        </div>
+
+        <!-- PAGE: JADWAL BOOKING -->
+        <div id="page-jadwal" class="page-content">
+            <button onclick="showPage('home')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali ke Beranda
+            </button>
+            <div class="bg-[#1a1a1a] rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl">
+                <div class="p-8 md:p-12 border-b border-white/5 bg-gradient-to-r from-[#1a1a1a] to-[#252525]">
+                    <h2 class="text-3xl font-serif text-[#d4af37] uppercase tracking-[0.2em] mb-2">Reservasi Kursi</h2>
+                    <p class="text-gray-500">Kami akan menghubungi Anda segera setelah formulir dikirim.</p>
+                </div>
+                <div class="p-8 md:p-12">
+                    <form id="bookingForm" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-widest block mb-2">Nama Anda</label>
+                                <input type="text" id="book-name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-[#d4af37] outline-none transition-all text-white" placeholder="Nama Lengkap">
+                            </div>
+                            <div>
+                                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-widest block mb-2">WhatsApp</label>
+                                <input type="tel" id="book-contact" required class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-[#d4af37] outline-none transition-all text-white" placeholder="0858xxxx">
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="text-[10px] text-[#d4af37] uppercase font-bold tracking-widest block mb-2">Program Yang Diminati</label>
+                                <select id="book-program" required class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-[#d4af37] outline-none transition-all appearance-none text-white">
+                                    <option value="" class="bg-[#1a1a1a]">Pilih Paket...</option>
+                                    <option value="Tahfidz Executive" class="bg-[#1a1a1a]">Tahfidz Executive</option>
+                                    <option value="Digital Creative Studio" class="bg-[#1a1a1a]">Digital Creative Studio</option>
+                                    <option value="VIP Private" class="bg-[#1a1a1a]">VIP Private (Home Visit)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full py-5 bg-gradient-to-r from-[#8b0000] to-[#550000] text-[#d4af37] border border-[#d4af37]/40 rounded-xl font-bold flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-xl uppercase tracking-widest text-xs">
+                                <i data-lucide="send" class="w-5 h-5"></i> Ajukan Jadwal
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="text-center mt-16 text-gray-500 text-[11px] tracking-widest uppercase">
-            &copy; 2024 Halawie Education. Karya Mulia Untuk Generasi Masa Depan.
+
+        <!-- PAGE: PEMBAYARAN -->
+        <div id="page-pembayaran" class="page-content">
+             <button onclick="showPage('home')" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali ke Beranda
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-1 space-y-4">
+                    <div class="bg-white/5 border border-white/10 p-8 rounded-3xl">
+                        <h3 class="text-[#d4af37] font-bold mb-6 uppercase text-xs tracking-[0.3em]">Metode Transfer</h3>
+                        <div class="space-y-4">
+                            <div class="p-5 bg-black/40 rounded-2xl border border-white/5 flex items-center justify-between group hover:border-[#d4af37]/50 transition-all cursor-pointer" onclick="copyText('7216738238', 'BSI')">
+                                <div>
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">BSI - MUHAMAD HUSNI YASIR RABANI</p>
+                                    <p class="font-mono font-bold text-lg">7216738238</p>
+                                </div>
+                                <i data-lucide="copy" class="w-5 h-5 text-gray-700 group-hover:text-[#d4af37]"></i>
+                            </div>
+                            <div class="p-5 bg-black/40 rounded-2xl border border-white/5 flex items-center justify-between group hover:border-[#d4af37]/50 transition-all cursor-pointer" onclick="copyText('085871509096', 'E-WALLET')">
+                                <div>
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">DANA / GOPAY</p>
+                                    <p class="font-mono font-bold text-lg">085871509096</p>
+                                </div>
+                                <i data-lucide="copy" class="w-5 h-5 text-gray-700 group-hover:text-[#d4af37]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="bg-[#1a1a1a] p-10 md:p-14 rounded-[3rem] border border-white/10 shadow-2xl">
+                        <h2 class="text-2xl font-serif text-[#d4af37] mb-8 uppercase tracking-widest">Konfirmasi Transaksi</h2>
+                        <div class="space-y-6">
+                            <input type="text" id="pay-name" placeholder="Nama Rekening Pengirim" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-[#d4af37] outline-none text-white">
+                            <input type="number" id="pay-amount" placeholder="Nominal Transfer (Rp)" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-[#d4af37] outline-none text-white">
+                            <button onclick="confirmPayment()" class="w-full py-5 bg-gradient-to-r from-[#8b0000] to-[#550000] text-[#d4af37] border border-[#d4af37]/40 rounded-xl font-bold flex items-center justify-center gap-3 uppercase tracking-widest text-xs">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i> Konfirmasi ke Admin
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+
+        <!-- PAGE: LOGIN -->
+        <div id="page-login" class="page-content">
+            <div class="max-w-md mx-auto mt-12">
+                <div class="bg-[#1a1a1a] rounded-[3rem] border border-white/10 p-12 relative overflow-hidden shadow-2xl">
+                    <div class="text-center mb-10">
+                        <!-- Logo in Login -->
+                        <div class="w-20 h-20 rounded-full border-2 border-[#d4af37] p-[3px] mx-auto mb-6 bg-white shadow-xl">
+                            <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Logo" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <h2 class="text-2xl font-serif text-white uppercase tracking-[0.3em]">Anggota VIP</h2>
+                        <p class="text-gray-500 text-xs mt-2">Silakan masuk ke dasbor belajar Anda.</p>
+                    </div>
+
+                    <form onsubmit="handleLogin(event)" class="space-y-6">
+                        <div class="relative group">
+                            <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 group-focus-within:text-[#d4af37]"></i>
+                            <input type="email" required placeholder="Email Terdaftar" class="w-full bg-black/50 border border-white/10 py-4 pl-12 pr-4 rounded-xl focus:border-[#d4af37] outline-none text-sm text-white">
+                        </div>
+                        <div class="relative group">
+                            <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 group-focus-within:text-[#d4af37]"></i>
+                            <input type="password" required placeholder="Kata Sandi" class="w-full bg-black/50 border border-white/10 py-4 pl-12 pr-4 rounded-xl focus:border-[#d4af37] outline-none text-sm text-white">
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#8b0000] to-[#550000] text-[#d4af37] py-4 rounded-xl font-bold uppercase tracking-[0.2em] text-xs border border-[#d4af37]/30 hover:scale-[1.02] shadow-xl transition-all">
+                            Masuk Dasbor
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- UI Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-[#d4af37] text-black px-10 py-3.5 rounded-full font-bold shadow-[0_10px_40px_rgba(212,175,55,0.4)] opacity-0 translate-y-20 transition-all pointer-events-none z-[100] uppercase text-[10px] tracking-widest">
+        Berhasil!
+    </div>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
+        const WA_NUMBER = "6285871509096";
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            document.getElementById(`page-${pageId}`).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            lucide.createIcons();
+        }
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('book-name').value;
+            const contact = document.getElementById('book-contact').value;
+            const program = document.getElementById('book-program').value;
+            const text = `Bismillah, Assalamualaikum.\n\nSaya ingin bertanya/pesan jadwal privat di Halawie Education:\nNama: ${name}\nWA: ${contact}\nProgram: ${program}\n\nMohon bantuannya Admin.`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`);
+            showToast("Data terkirim ke Admin!");
+        });
+
+        function copyText(text, label) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            showToast(`${label} Di-copy!`);
+        }
+
+        function confirmPayment() {
+            const name = document.getElementById('pay-name').value;
+            const amount = document.getElementById('pay-amount').value;
+            if(!name || !amount) return showToast("Harap isi data transfer!");
+            const text = `Halo Admin Halawie,\n\nSaya sudah transfer untuk biaya pendidikan:\nNama: ${name}\nNominal: Rp ${amount}\n\nMohon segera dicek. Terima kasih.`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`);
+        }
+
+        function toggleTestimonyForm() {
+            const form = document.getElementById('testimony-form');
+            form.classList.toggle('hidden');
+            if(!form.classList.contains('hidden')) {
+                form.scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+        }
+
+        function addTestimony() {
+            const name = document.getElementById('testi-name').value;
+            const job = document.getElementById('testi-job').value;
+            const msg = document.getElementById('testi-msg').value;
+            
+            if(!name || !msg) return showToast("Harap lengkapi testimoni!");
+            
+            const list = document.getElementById('testimony-list');
+            const card = document.createElement('div');
+            card.className = "testimony-card p-10 rounded-[2.5rem] relative animate-fadeIn shadow-2xl";
+            card.innerHTML = `
+                <i data-lucide="quote" class="absolute top-8 right-10 w-12 h-12 text-white/5"></i>
+                <p class="text-gray-400 italic mb-8 leading-relaxed text-sm">"${msg}"</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full border border-[#d4af37]/40 p-1">
+                        <div class="w-full h-full rounded-full bg-[#333] flex items-center justify-center">
+                            <i data-lucide="user" class="w-6 h-6 text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-[#d4af37]">${name}</p>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">${job || 'Anggota Halawie'}</p>
+                    </div>
+                </div>`;
+            
+            list.prepend(card);
+            lucide.createIcons();
+            
+            // Cleanup
+            document.getElementById('testi-name').value = "";
+            document.getElementById('testi-job').value = "";
+            document.getElementById('testi-msg').value = "";
+            toggleTestimonyForm();
+            showToast("Testimoni Anda telah terbit!");
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            showToast("Verifikasi Berhasil...");
+            setTimeout(() => showPage('home'), 1000);
+        }
+
+        function showToast(message) {
+            const t = document.getElementById('toast');
+            t.innerText = message;
+            t.style.opacity = "1";
+            t.style.transform = "translate(-50%, 0)";
+            setTimeout(() => {
+                t.style.opacity = "0";
+                t.style.transform = "translate(-50%, 20px)";
+            }, 3000);
+        }
     </script>
 </body>
 </html>
-
