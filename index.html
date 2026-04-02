@@ -100,9 +100,8 @@
                 </div>
             </div>
             
-            <div class="flex gap-4">
-                <button onclick="showPage('login')" class="text-[10px] md:text-xs font-bold border border-[#d4af37]/50 px-5 py-2 rounded-full hover:bg-[#d4af37] hover:text-black transition-all text-[#d4af37] tracking-widest uppercase">Member Portal</button>
-            </div>
+            <!-- Removed Login Button Container -->
+            <div></div>
         </div>
     </nav>
 
@@ -112,8 +111,8 @@
         <!-- PAGE: HOME -->
         <div id="page-home" class="page-content active">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-serif mb-6 leading-tight">Membentuk<br><span class="gold-gradient italic">Generasi Al-quran yang Melek Digital</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg"> Les Khusus Anak SD Untuk Pembelajaran Al-Qur'an Metode UMMI, IPAS, Matematika, Bahasa Arab & Desain Grafis.</p>
+                <h2 class="text-4xl md:text-6xl font-serif mb-6 leading-tight">Membentuk<br><span class="gold-gradient italic">Generasi Al-Qur'an yang Melek Digital</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Les Khusus Anak SD Untuk Pembelajaran Al-Qur'an Metode UMMI, IPAS, Matematika, Bahasa Arab & Desain Grafis.</p>
             </div>
 
             <!-- DASHBOARD NAV -->
@@ -152,42 +151,42 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Tahfidz Card -->
-                    <div class="program-card border border-white/10 rounded-[2.5rem] p-8 flex flex-col h-full">
+                    <div class="program-card border border-[#d4af37]/40 rounded-[2.5rem] p-8 flex flex-col h-full relative overflow-hidden bg-[#1a1a1a]/50">
                         <div class="mb-8">
                             <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest">Islamic Foundation</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4">Paket 1</h3>
-                            <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest">5x Pertemuan @ 60 Menit</span>
-                        <h3 class="text-2xl font-bold mb-4">Metode Ummi & Arabic Mastery</h3>
-                        <h3 class="text-2xl font-bold mb-4">RP. 350.000</h3>
-                        <p class="text-gray-400 text-sm mb-8 flex-grow">Fokus pada kelancaran membaca Al-Quran dengan tartil metode Ummi dan Penguasaan bahasa Arab komunikatif (Fashahah).</p>
+                            <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest w-max mb-4 block">5x Pertemuan @ 60 Menit</span>
+                        <h3 class="text-xl font-bold mb-2">Metode Ummi & Arabic Mastery</h3>
+                        <h3 class="text-2xl font-bold text-[#d4af37] mb-4">Rp 350.000</h3>
+                        <p class="text-gray-400 text-sm mb-8 flex-grow">Fokus pada kelancaran membaca Al-Qur'an dengan tartil metode Ummi dan penguasaan bahasa Arab komunikatif (Fashahah).</p>
                         <ul class="space-y-4 mb-10 text-sm text-gray-300">
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Privat Khusus 7 Murid saja</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Privat Intensif & Halaqah Kecil</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Monitoring Harian</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Daily Language Habit</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Syahdah Ummi</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Syahadah Ummi</li>
                         </ul>
-                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-white/5 hover:bg-[#d4af37] hover:text-black border border-white/10 rounded-2xl font-bold transition-all uppercase text-xs tracking-widest">Ambil Paket Ini</button>
+                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-[#d4af37] text-black border border-[#d4af37] rounded-2xl font-bold hover:scale-105 transition-all uppercase text-xs tracking-widest">Ambil Paket Ini</button>
                     </div>
 
                     <!-- Digital Card -->
-                    <div class="program-card border border-[#d4af37]/40 rounded-[2.5rem] p-8 flex flex-col h-full relative overflow-hidden bg-[#1a1a1a]/50">
+                    <div class="program-card border border-white/10 rounded-[2.5rem] p-8 flex flex-col h-full">
                         <div class="mb-8">
                             <span class="bg-blue-600/30 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/20 uppercase tracking-widest">Future Skill</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4">Paket 2</h3>
-                            <span class="bg-blue-600/30 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/20 uppercase tracking-widest">7x Pertemuan @ 60 Menit</span>
-                        <h3 class="text-2xl font-bold mb-4">STEM Logic (Ipas & Matematika)</h3>
-                        <h3 class="text-2xl font-bold mb-4">RP. 450.000</h3>
-                        <p class="text-gray-400 text-sm mb-8 flex-grow">Belajar menaklukan angka dan sains dengan logika yang menyenangkan dan aplikatif.</p>
+                            <span class="bg-blue-600/30 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/20 uppercase tracking-widest w-max mb-4 block">7x Pertemuan @ 60 Menit</span>
+                        <h3 class="text-xl font-bold mb-2">STEM Logic (IPAS & Matematika)</h3>
+                        <h3 class="text-2xl font-bold text-[#d4af37] mb-4">Rp 450.000</h3>
+                        <p class="text-gray-400 text-sm mb-8 flex-grow">Belajar menaklukkan angka dan sains dengan logika yang menyenangkan dan aplikatif.</p>
                         <ul class="space-y-4 mb-10 text-sm text-gray-300">
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Privat Khusus 7 Murid saja</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Problem Solving 1-on-1</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Laporan Progres Kognitif</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Portofolio Project & Eksperimen</li>
                         </ul>
-                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-[#d4af37] text-black border border-[#d4af37] rounded-2xl font-bold hover:scale-105 transition-all uppercase text-xs tracking-widest">Pilih STEM Logic</button>
+                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-white/5 hover:bg-[#d4af37] hover:text-black border border-white/10 rounded-2xl font-bold transition-all uppercase text-xs tracking-widest">Pilih STEM Logic</button>
                     </div>
 
                     <!-- VIP Card -->
@@ -196,15 +195,15 @@
                             <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest">Creative Designer</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4">Paket 3 (VIP)</h3>
-                            <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest">4x pertemuan @45 Menit</span>
-                        <h3 class="text-2xl font-bold mb-4">Creative Design Studio</h3>
-                        <h3 class="text-2xl font-bold mb-4">RP. 500.000</h3>
+                            <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest w-max mb-4 block">4x Pertemuan @ 45 Menit</span>
+                        <h3 class="text-xl font-bold mb-2">Creative Design Studio</h3>
+                        <h3 class="text-2xl font-bold text-[#d4af37] mb-4">Rp 500.000</h3>
                         <p class="text-gray-400 text-sm mb-8 flex-grow">Fokus pada penguasaan teknik desain lanjutan, estetika visual dan penguasaan software.</p>
                         <ul class="space-y-4 mb-10 text-sm text-gray-300">
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Khusus untuk 3 Siswa Saja</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> SMP & SMA Bisa mendaftar</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> SMP & SMA Bisa Mendaftar</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Monitoring Desain Berbasis Proyek</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Riview & Feedback Visual</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Review & Feedback Visual</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Digital Portofolio Ready</li>
                         </ul>
                         <button onclick="showPage('jadwal')" class="w-full py-4 bg-white/5 hover:bg-[#d4af37] hover:text-black border border-white/10 rounded-2xl font-bold transition-all uppercase text-xs tracking-widest">Ambil Paket VIP</button>
@@ -257,7 +256,7 @@
                         <!-- Testimony 2 -->
                         <div class="testimony-card p-10 rounded-[2.5rem] relative">
                             <i data-lucide="quote" class="absolute top-8 right-10 w-12 h-12 text-white/5"></i>
-                            <p class="text-gray-400 italic mb-8 leading-relaxed text-sm">"Program VIP Privatnya juara! anak saya suka banget, apalagi dengan Pengajarnya sangat kompeten dan materi desain grafisnya benar-benar dari nol sampai bisa buat portofolio."</p>
+                            <p class="text-gray-400 italic mb-8 leading-relaxed text-sm">"Program VIP Privatnya juara! Anak saya suka banget, apalagi dengan pengajarnya sangat kompeten dan materi desain grafisnya benar-benar dari nol sampai bisa buat portofolio."</p>
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-full border border-[#d4af37]/40 p-1">
                                     <div class="w-full h-full rounded-full bg-[#333] flex items-center justify-center">
@@ -283,7 +282,7 @@
                     <div>
                         <p class="text-[#d4af37] font-bold text-lg">Paket Pembelajaran Custom</p>
                         <p class="text-gray-500 text-sm italic">Khusus untuk mapel pilihan yang disepakati</p>
-                        <p class="text-gray-500 text-sm italic">dan telah disesuaikan dengan kemauan/minat siswa dan seuai dengan pilihan orang tua</p>
+                        <p class="text-gray-500 text-sm italic">dan telah disesuaikan dengan kemauan/minat siswa serta sesuai dengan pilihan orang tua</p>
                     </div>
                 </div>
                 <div class="flex flex-col items-center md:items-end gap-3">
@@ -380,36 +379,6 @@
             </div>
         </div>
 
-        <!-- PAGE: LOGIN -->
-        <div id="page-login" class="page-content">
-            <div class="max-w-md mx-auto mt-12">
-                <div class="bg-[#1a1a1a] rounded-[3rem] border border-white/10 p-12 relative overflow-hidden shadow-2xl">
-                    <div class="text-center mb-10">
-                        <!-- Logo in Login -->
-                        <div class="w-20 h-20 rounded-full border-2 border-[#d4af37] p-[3px] mx-auto mb-6 bg-white shadow-xl">
-                            <img src="https://lh3.googleusercontent.com/d/1ZCyPw0LEveIb6c5T1kca6x0dYXt07RWl" alt="Logo" class="w-full h-full rounded-full object-cover">
-                        </div>
-                        <h2 class="text-2xl font-serif text-white uppercase tracking-[0.3em]">Anggota VIP</h2>
-                        <p class="text-gray-500 text-xs mt-2">Silakan masuk ke dasbor belajar Anda.</p>
-                    </div>
-
-                    <form onsubmit="handleLogin(event)" class="space-y-6">
-                        <div class="relative group">
-                            <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 group-focus-within:text-[#d4af37]"></i>
-                            <input type="email" required placeholder="Email Terdaftar" class="w-full bg-black/50 border border-white/10 py-4 pl-12 pr-4 rounded-xl focus:border-[#d4af37] outline-none text-sm text-white">
-                        </div>
-                        <div class="relative group">
-                            <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 group-focus-within:text-[#d4af37]"></i>
-                            <input type="password" required placeholder="Kata Sandi" class="w-full bg-black/50 border border-white/10 py-4 pl-12 pr-4 rounded-xl focus:border-[#d4af37] outline-none text-sm text-white">
-                        </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#8b0000] to-[#550000] text-[#d4af37] py-4 rounded-xl font-bold uppercase tracking-[0.2em] text-xs border border-[#d4af37]/30 hover:scale-[1.02] shadow-xl transition-all">
-                            Masuk Dasbor
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <!-- UI Toast -->
@@ -500,12 +469,6 @@
             showToast("Testimoni Anda telah terbit!");
         }
 
-        function handleLogin(e) {
-            e.preventDefault();
-            showToast("Verifikasi Berhasil...");
-            setTimeout(() => showPage('home'), 1000);
-        }
-
         function showToast(message) {
             const t = document.getElementById('toast');
             t.innerText = message;
@@ -519,10 +482,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
