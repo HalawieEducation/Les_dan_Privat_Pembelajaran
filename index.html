@@ -99,9 +99,6 @@
                     <span class="text-[10px] text-[#d4af37] tracking-[0.2em] uppercase font-semibold">Education</span>
                 </div>
             </div>
-            
-            <!-- Removed Login Button Container -->
-            <div></div>
         </div>
     </nav>
 
@@ -133,12 +130,12 @@
                     <p class="text-gray-500 text-sm">Konfirmasi pembayaran biaya pendidikan Anda dengan aman.</p>
                 </div>
 
-                <div onclick="document.getElementById('section-testimoni').scrollIntoView({behavior: 'smooth'})" class="nav-card bg-white/5 border border-white/10 p-8 rounded-3xl cursor-pointer transition-all flex flex-col items-center text-center group">
+                <div onclick="document.getElementById('section-galeri').scrollIntoView({behavior: 'smooth'})" class="nav-card bg-white/5 border border-white/10 p-8 rounded-3xl cursor-pointer transition-all flex flex-col items-center text-center group">
                     <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-                        <i data-lucide="message-square" class="w-8 h-8 text-blue-400 group-hover:text-white"></i>
+                        <i data-lucide="image" class="w-8 h-8 text-blue-400 group-hover:text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Suara Pelanggan</h3>
-                    <p class="text-gray-500 text-sm">Lihat testimoni anggota atau tulis kesan Anda di sini.</p>
+                    <h3 class="text-xl font-bold mb-2">Galeri Kegiatan</h3>
+                    <p class="text-gray-500 text-sm">Lihat dokumentasi aktivitas pembelajaran siswa kami.</p>
                 </div>
             </div>
 
@@ -150,13 +147,13 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Tahfidz Card -->
+                    <!-- Tahfidz Card (Pusat Perhatian / Unggulan) -->
                     <div class="program-card border border-[#d4af37]/40 rounded-[2.5rem] p-8 flex flex-col h-full relative overflow-hidden bg-[#1a1a1a]/50">
                         <div class="mb-8">
                             <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest">Islamic Foundation</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4">Paket 1</h3>
-                            <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest w-max mb-4 block">5x Pertemuan @ 60 Menit</span>
+                        <span class="bg-[#8b0000]/30 text-[#d4af37] text-[10px] font-bold px-3 py-1 rounded-full border border-[#d4af37]/20 uppercase tracking-widest w-max mb-4 block">5x Pertemuan @ 60 Menit</span>
                         <h3 class="text-xl font-bold mb-2">Metode Ummi & Arabic Mastery</h3>
                         <h3 class="text-2xl font-bold text-[#d4af37] mb-4">Rp 350.000</h3>
                         <p class="text-gray-400 text-sm mb-8 flex-grow">Fokus pada kelancaran membaca Al-Qur'an dengan tartil metode Ummi dan penguasaan bahasa Arab komunikatif (Fashahah).</p>
@@ -167,7 +164,8 @@
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Daily Language Habit</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Syahadah Ummi</li>
                         </ul>
-                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-[#d4af37] text-black border border-[#d4af37] rounded-2xl font-bold hover:scale-105 transition-all uppercase text-xs tracking-widest">Ambil Paket Ini</button>
+                        <!-- Tombol Emas Menyala -->
+                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-[#d4af37] text-black border border-[#d4af37] rounded-2xl font-bold hover:scale-105 transition-all uppercase text-xs tracking-widest shadow-[0_0_20px_rgba(212,175,55,0.4)]">Produk Paket Unggulan</button>
                     </div>
 
                     <!-- Digital Card -->
@@ -176,7 +174,7 @@
                             <span class="bg-blue-600/30 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/20 uppercase tracking-widest">Future Skill</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4">Paket 2</h3>
-                            <span class="bg-blue-600/30 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/20 uppercase tracking-widest w-max mb-4 block">7x Pertemuan @ 60 Menit</span>
+                        <span class="bg-blue-600/30 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-400/20 uppercase tracking-widest w-max mb-4 block">7x Pertemuan @ 60 Menit</span>
                         <h3 class="text-xl font-bold mb-2">STEM Logic (IPAS & Matematika)</h3>
                         <h3 class="text-2xl font-bold text-[#d4af37] mb-4">Rp 450.000</h3>
                         <p class="text-gray-400 text-sm mb-8 flex-grow">Belajar menaklukkan angka dan sains dengan logika yang menyenangkan dan aplikatif.</p>
@@ -195,7 +193,7 @@
                             <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest">Creative Designer</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4">Paket 3 (VIP)</h3>
-                            <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest w-max mb-4 block">4x Pertemuan @ 45 Menit</span>
+                        <span class="bg-purple-600/30 text-purple-400 text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/20 uppercase tracking-widest w-max mb-4 block">4x Pertemuan @ 45 Menit</span>
                         <h3 class="text-xl font-bold mb-2">Creative Design Studio</h3>
                         <h3 class="text-2xl font-bold text-[#d4af37] mb-4">Rp 500.000</h3>
                         <p class="text-gray-400 text-sm mb-8 flex-grow">Fokus pada penguasaan teknik desain lanjutan, estetika visual dan penguasaan software.</p>
@@ -206,7 +204,58 @@
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Review & Feedback Visual</li>
                             <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Digital Portofolio Ready</li>
                         </ul>
-                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-white/5 hover:bg-[#d4af37] hover:text-black border border-white/10 rounded-2xl font-bold transition-all uppercase text-xs tracking-widest">Ambil Paket VIP</button>
+                        <button onclick="showPage('jadwal')" class="w-full py-4 bg-white/5 hover:bg-[#d4af37] hover:text-black border border-white/10 rounded-2xl font-bold transition-all uppercase text-xs tracking-widest">Ambil Paket Desian VIP</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: GALERI KEGIATAN -->
+            <section id="section-galeri" class="mb-24 scroll-mt-24">
+                <div class="flex flex-col items-center text-center mb-12">
+                    <span class="text-[#d4af37] text-xs font-bold tracking-[0.3em] uppercase mb-4">Dokumentasi</span>
+                    <h2 class="text-3xl md:text-5xl font-serif">Galeri <span class="text-[#d4af37]">Kegiatan</span></h2>
+                    <p class="text-gray-400 mt-4 text-sm max-w-xl">Momen-momen berharga saat siswa Halawie Education belajar, berkreasi, dan menghafal Al-Qur'an bersama para pengajar.</p>
+                </div>
+
+                <!-- 
+                    SUNDAY: CARA MENGGANTI FOTO 
+                    1. Upload fotomu ke web seperti postimages.org atau google drive.
+                    2. Copy "Direct Link" (link yang berakhiran .jpg atau .png)
+                    3. Ganti link di dalam atribut src="" pada tag <img> di bawah ini.
+                -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Foto 1 -->
+                    <div class="group relative overflow-hidden rounded-3xl border border-white/10 aspect-square cursor-pointer">
+                        <img src="https://drive.google.com/file/d/1QpBCFVjgd0b4u2k8r8OGBEmLTUO2-a-x/view?usp=sharing">
+                        <img src="https://drive.google.com/file/d/140EyE-7rQPPfw3YoUfMugeifxQ6lc1Aq/view?usp=sharing">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <p class="text-[#d4af37] text-sm font-bold uppercase tracking-wider">Arabic Mastery</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 2 -->
+                    <div class="group relative overflow-hidden rounded-3xl border border-white/10 aspect-square cursor-pointer">
+                        <img src="https://drive.google.com/file/d/1rzVIKnyE2UzTN2cWiR9g2RvSWnx-FltV/view?usp=sharing">
+                        <img src="https://drive.google.com/file/d/12n1RX1WyI04U3cC4Lx8jViFOU3IgxqMf/view?usp=sharing">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <p class="text-[#d4af37] text-sm font-bold uppercase tracking-wider">Kelas Desain</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 3 -->
+                    <div class="group relative overflow-hidden rounded-3xl border border-white/10 aspect-square cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80" alt="Belajar Matematika" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <p class="text-[#d4af37] text-sm font-bold uppercase tracking-wider">STEM Logic</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 4 -->
+                    <div class="group relative overflow-hidden rounded-3xl border border-white/10 aspect-square cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80" alt="Aktivitas Belajar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <p class="text-[#d4af37] text-sm font-bold uppercase tracking-wider">Metode UMMI</p>
+                        </div>
                     </div>
                 </div>
             </section>
